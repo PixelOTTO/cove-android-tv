@@ -86,6 +86,15 @@
     h2 { margin: 15px 0 12px; font-size: clamp(2.25rem, 4.2vw, 3.55rem); line-height: 1.07; letter-spacing: -.06em; }
     .section-head p { margin: 0; color: var(--muted); font-size: 1.05rem; }
     .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .screenshots-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .screenshot-card { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); }
+    .screenshot-media { display: grid; place-items: center; aspect-ratio: 16 / 9; background: #080a14; }
+    .screenshot-media img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .screenshot-card.wide { grid-column: 1 / -1; }
+    .screenshot-card.wide .screenshot-media { aspect-ratio: 3.1 / 1; }
+    .screenshot-card figcaption { padding: 16px 20px 20px; }
+    .screenshot-card figcaption strong { display: block; margin-bottom: 4px; font-size: 1.02rem; }
+    .screenshot-card figcaption span { display: block; color: var(--muted); font-size: .9rem; }
     .card { min-height: 238px; padding: 26px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); }
     .card-icon { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 27px; border: 1px solid rgba(115,210,255,.22); border-radius: 15px; background: linear-gradient(145deg, rgba(36,214,239,.17), rgba(133,92,255,.21)); color: #91eff7; font-size: 1.25rem; }
     .card h3 { margin: 0 0 8px; font-size: 1.13rem; letter-spacing: -.02em; }
@@ -99,7 +108,7 @@
     .step { display: grid; grid-template-columns: 34px 1fr; gap: 13px; align-items: start; }
     .step-num { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 50%; background: rgba(36,214,239,.12); color: #91eff7; font-weight: 800; font-size: .86rem; }
     .step strong { display: block; margin: 2px 0 3px; font-size: .98rem; }
-    .step span { display: block; color: var(--muted); font-size: .91rem; }
+    .step > div > span { display: block; color: var(--muted); font-size: .91rem; }
     .install-panel { padding: 27px; border: 1px solid var(--line); border-radius: 22px; background: rgba(17,21,42,.85); box-shadow: 0 22px 60px rgba(0,0,0,.18); }
     .install-panel h3 { margin: 0 0 6px; font-size: 1.22rem; }
     .install-panel > p { margin: 0 0 18px; color: var(--muted); font-size: .92rem; }
@@ -146,6 +155,8 @@
       .floating-note { left: -9px; bottom: -20px; font-size: .78rem; }
       .section { padding: 68px 0; }
       .features { grid-template-columns: 1fr; }
+      .screenshots-grid { grid-template-columns: 1fr; }
+      .screenshot-card.wide { grid-column: auto; }
       .card { min-height: 0; }
       .card-icon { margin-bottom: 18px; }
       .update-band, .install-panel { padding: 22px; }
@@ -168,6 +179,7 @@
       </a>
       <div class="navlinks">
         <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
         <a href="#install">Install</a>
         <a class="nav-github" href="https://github.com/PixelOTTO/cove-android-tv">GitHub ↗</a>
         <a class="button primary small" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download</a>
@@ -222,6 +234,33 @@
       </div>
     </section>
 
+    <section class="section alt" id="screenshots">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">A closer look</span>
+          <h2>Made for real <span class="gradient-text">TV time.</span></h2>
+          <p>Explore CoveTV’s home screen, handy shortcuts, and the settings that let you shape it to your space.</p>
+        </div>
+        <div class="screenshots-grid">
+          <figure class="screenshot-card">
+            <div class="screenshot-media"><img src="screenshots/home-screen.png" alt="CoveTV home screen with its app shelf over a scenic wallpaper"></div>
+            <figcaption><strong>Your home screen</strong><span>Keep your apps and everyday controls in easy reach.</span></figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="screenshot-media"><img src="screenshots/settings-layout.png" alt="CoveTV launcher settings for app columns, dock rows, wallpaper, and weather"></div>
+            <figcaption><strong>Make it yours</strong><span>Choose the grid, dock, theme, wallpaper, and weather options.</span></figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="screenshot-media"><img src="screenshots/settings-focus-updates.png" alt="CoveTV settings for animations, remote focus, backup, restore, and update checks"></div>
+            <figcaption><strong>Fine-tune the details</strong><span>Adjust remote focus and motion, back up settings, and manage update checks.</span></figcaption>
+          </figure>
+          <figure class="screenshot-card wide">
+            <div class="screenshot-media"><img src="screenshots/shortcuts-weather.png" alt="CoveTV shortcuts and weather panel with a local forecast"></div>
+            <figcaption><strong>Useful at a glance</strong><span>Check the weather and open common TV controls without leaving the home screen.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
     <section class="section">
       <div class="wrap">
         <div class="update-band">
