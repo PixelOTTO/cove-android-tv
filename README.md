@@ -19,23 +19,39 @@ If the Home prompt does not appear, open Cove's **Settings → TV & Launcher →
 
 This is a sideloaded APK release and is not distributed through Google Play.
 
-### Install with help from an AI assistant (ADB)
+### Quick start with an AI assistant
 
-An AI assistant can guide you through installing Cove with Android Debug Bridge (ADB). To run the commands for you, the assistant also needs access to your computer's terminal and Android Platform Tools (ADB). Enabling Developer options does not give an AI access by itself; you must approve the TV's debugging prompt.
+You need an Android TV or Google TV, a computer, and an AI assistant that can use the computer's terminal. For a wireless install, connect the computer and TV to the same Wi-Fi network. The assistant can guide you without terminal access, but it cannot run the install commands for you.
 
-1. Download the latest Cove APK on the computer you will use to install it, and install Android [SDK Platform Tools](https://developer.android.com/tools/releases/platform-tools) so the `adb` command is available.
-2. On the TV, open **Settings → About** (the exact menu varies by brand) and select **Build** or **Build number** seven times to reveal **Developer options**.
-3. In **Developer options**, turn on **USB debugging**. Connect the TV to the computer with a USB data cable if the TV supports ADB over USB. When the TV asks whether to allow debugging from this computer, review the prompt and choose **Allow**.
-4. Open a terminal in the folder containing the downloaded APK. Check that ADB sees the TV, then install Cove:
+1. On the TV, open **Settings → About** (menu names vary by brand) and select **Build** or **Build number** seven times to show **Developer options**.
+2. In **Developer options**, turn on **USB debugging**. If your TV has **Network debugging**, **ADB debugging**, or **Wireless debugging**, turn that on too. Note the TV's IP address if using Wi-Fi.
+3. On the computer, open an AI assistant with terminal access and give it this prompt, replacing `<TV_IP>` with your TV's address:
 
-   ```sh
-   adb devices
-   adb install -r "Cove-Android-TV-launcher.apk"
-   ```
+   > Install Cove on my Android TV at `<TV_IP>`. Download the ready-made APK from https://github.com/PixelOTTO/cove-android-tv/releases/latest (the asset is named `Cove-Android-TV-launcher.apk`). Use Android Platform Tools and ADB; do not build from source, uninstall apps, or change unrelated TV settings. Explain the commands and ask me before installing. Wait for me to approve the debugging prompt on the TV.
 
-   `-r` updates an existing Cove installation while keeping its data. If ADB lists more than one device, use `adb -s DEVICE_ID install -r "Cove-Android-TV-launcher.apk"` with the TV's ID from `adb devices`.
+4. Keep the TV on and approve **Allow USB debugging?** when it appears. When Android asks which Home app to use, choose Cove.
 
-If your TV supports **Wireless debugging** instead of ADB over USB, put the computer and TV on the same Wi-Fi network, enable Wireless debugging, then use the pairing address and code shown on the TV:
+### Install manually with ADB
+
+Install Android [SDK Platform Tools](https://developer.android.com/tools/releases/platform-tools) on the computer and download the latest release APK. The APK filename stays the same across releases.
+
+For USB debugging, connect a USB data cable if the TV supports ADB over USB, approve the TV's debugging prompt, then run these commands from the folder containing the APK:
+
+```sh
+adb devices
+adb install -r "Cove-Android-TV-launcher.apk"
+```
+
+`-r` updates an existing Cove installation while keeping its data. If ADB lists more than one device, use `adb -s DEVICE_ID install -r "Cove-Android-TV-launcher.apk"` with the TV's ID from `adb devices`.
+
+Some TVs have a **Network debugging** or **ADB over network** switch that uses port 5555. If your TV shows that option, use its IP address to connect, then install:
+
+```sh
+adb connect TV_IP:5555
+adb install -r "Cove-Android-TV-launcher.apk"
+```
+
+For **Wireless debugging**, connect the computer and TV to the same Wi-Fi network. Use the pairing address, pairing port, and code shown in the TV's Wireless debugging screen:
 
 ```sh
 adb pair TV_IP:PAIRING_PORT
@@ -44,9 +60,7 @@ adb devices
 adb install -r "Cove-Android-TV-launcher.apk"
 ```
 
-Replace the placeholders with the matching IP address and ports shown in the TV's Wireless debugging screen. Wireless debugging on Android TV requires Android 13 or later; menus and connection options vary by device. [Android's ADB guide](https://developer.android.com/tools/adb) has the official USB and Wi-Fi steps. Turn debugging off again when the install is done.
-
-You can ask an AI assistant: “Help me install Cove on my Android TV using ADB. The APK is in my Downloads folder. Explain each step, use only the official Android Platform Tools, and wait for me to approve the TV's debugging prompt.” After installation, press **Home** and choose Cove as the launcher.
+Enter the pairing code when ADB prompts. Use the separate connection port shown on the TV for `adb connect`. Wireless debugging on Android TV requires Android 13 or later. Menus and connection options vary by device; see [Android's ADB guide](https://developer.android.com/tools/adb). Turn debugging off when you're done.
 
 ## Requirements
 
@@ -61,3 +75,9 @@ You can ask an AI assistant: “Help me install Cove on my Android TV using ADB.
 - Remote-friendly focus, motion, and highlight settings
 
 This repository contains APK releases and install guidance. It does not currently include the application source code.
+
+## Credits
+
+Cove is an unofficial community-modified build based on [CleanYourTV](https://github.com/Gathin23/cleanyourtv) by Gathin. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for CleanYourTV's MIT notice and [FONT-LICENSE-OFL.txt](FONT-LICENSE-OFL.txt) for the Outfit font license. Cove is not affiliated with or endorsed by the CleanYourTV project.
+
+The AI-assisted install guide was informed by the setup examples in [CleanYourTV UI](https://github.com/matheus-caldeira/cleanyourtv-ui) and [Free My TV](https://github.com/simbasjungles/free-my-tv). Cove does not include Free My TV code.
