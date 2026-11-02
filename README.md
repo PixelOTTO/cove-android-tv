@@ -9,7 +9,7 @@ Brand assets: [app icon](covetv-vibrant-icon-512.png) and [TV banner](covetv-vib
 ## Download
 
 Get the latest APK from [Releases](https://github.com/PixelOTTO/cove-android-tv/releases/latest).
-The APK keeps the same filename across releases: `CoveTV-Android-TV-launcher.apk`.
+The APK keeps the same filename across releases: `CoveTV.apk`.
 
 ## Install
 
