@@ -94,8 +94,7 @@
     h2 { margin: 15px 0 12px; font-size: clamp(2.25rem, 4.2vw, 3.55rem); line-height: 1.07; letter-spacing: -.06em; }
     .section-head p { margin: 0; color: var(--muted); font-size: 1.05rem; }
     .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .screenshots-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; width: min(100%, 1120px); margin-inline: auto; }
-    .screenshot-card.featured, .screenshot-card.wide { grid-column: 1 / -1; }
+    .screenshots-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; width: min(100%, 1040px); margin-inline: auto; }
     .screenshot-card { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); }
     .screenshot-media { display: grid; place-items: center; background: #080a14; }
     .screenshot-media img { display: block; width: 100%; height: auto; }
@@ -163,8 +162,6 @@
       .floating-note { left: -9px; bottom: -20px; font-size: .78rem; }
       .section { padding: 68px 0; }
       .features { grid-template-columns: 1fr; }
-      .screenshots-grid { grid-template-columns: minmax(0, 1fr); }
-      .screenshot-card.featured, .screenshot-card.wide { grid-column: auto; }
       .card { min-height: 0; }
       .card-icon { margin-bottom: 18px; }
       .update-band, .install-panel { padding: 22px; }
@@ -247,24 +244,16 @@
         <div class="section-head">
           <span class="eyebrow">A closer look</span>
           <h2>Made for real <span class="gradient-text">TV time.</span></h2>
-          <p>See the home screen on its own, then explore shortcuts and the settings that let you shape CoveTV to your space.</p>
+          <p>Explore CoveTV’s home screen, shortcuts, and the settings that let you shape it to your space.</p>
         </div>
         <div class="screenshots-grid">
-          <figure class="screenshot-card featured">
-            <div class="screenshot-media"><img src="screenshots/home-screen.png" alt="CoveTV home screen showing the clock, weather, and favorite app dock" loading="lazy" decoding="async"></div>
-            <figcaption><strong>Your home screen</strong><span>Apps, helpful details, and favorites arranged for the big screen.</span></figcaption>
-          </figure>
-          <figure class="screenshot-card wide">
-            <div class="screenshot-media"><img src="screenshots/shortcuts-weather.png" alt="CoveTV shortcuts row above a wide weather forecast panel" loading="lazy" decoding="async"></div>
-            <figcaption><strong>Shortcuts and local weather</strong><span>Quick access to All Apps and TV settings, with the forecast close by.</span></figcaption>
+          <figure class="screenshot-card">
+            <div class="screenshot-media"><img src="screenshots/home-and-shortcuts.png" alt="CoveTV home screen and shortcuts panel, stitched into one preview" loading="lazy" decoding="async"></div>
+            <figcaption><strong>Home and shortcuts</strong><span>See your apps, everyday controls, and weather at a glance.</span></figcaption>
           </figure>
           <figure class="screenshot-card">
-            <div class="screenshot-media"><img src="screenshots/settings-layout.png" alt="CoveTV settings for app rows, dock appearance, theme, wallpaper, and weather" loading="lazy" decoding="async"></div>
-            <figcaption><strong>Shape the layout and look</strong><span>Choose app rows, dock style, themes, wallpaper, and weather units.</span></figcaption>
-          </figure>
-          <figure class="screenshot-card">
-            <div class="screenshot-media"><img src="screenshots/settings-focus-updates.png" alt="CoveTV motion, focus, default launcher, backup, and automatic update settings" loading="lazy" decoding="async"></div>
-            <figcaption><strong>Tune focus and launcher options</strong><span>Adjust remote movement and manage your launcher preferences.</span></figcaption>
+            <div class="screenshot-media"><img src="screenshots/launcher-settings.png" alt="CoveTV launcher settings for layout, wallpaper, motion, and update options" loading="lazy" decoding="async"></div>
+            <figcaption><strong>Settings that make it yours</strong><span>Choose the layout and look, then tune remote focus and update checks.</span></figcaption>
           </figure>
         </div>
       </div>
