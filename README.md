@@ -2,7 +2,7 @@
 
 CoveTV is a customizable home launcher for Android TV and Google TV, designed for remote control.
 
-![CoveTV Android TV banner](covetv-vibrant-banner-320x180.png)
+![CoveTV Android TV banner](covetv-vibrant-banner-1280x720.png)
 
 Brand assets: [app icon](covetv-vibrant-icon-512.png) and [TV banner](covetv-vibrant-banner-320x180.png).
 
