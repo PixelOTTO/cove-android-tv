@@ -2,7 +2,7 @@
 
 ## CleanYourTV
 
-Cove is based on the Android TV launcher from [CleanYourTV](https://github.com/Gathin23/cleanyourtv), by Gathin. The CleanYourTV portions are licensed under the MIT License.
+CoveTV is based on the Android TV launcher from [CleanYourTV](https://github.com/Gathin23/cleanyourtv), by Gathin. The CleanYourTV portions are licensed under the MIT License.
 
 Copyright (c) 2026 Gathin
 
