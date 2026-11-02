@@ -1,5 +1,9 @@
 # Third-party notices
 
+## CoveTV-specific changes
+
+This repository does not currently specify a separate license for CoveTV-specific modifications. The notices below identify licenses for CleanYourTV portions and the Outfit typeface.
+
 ## CleanYourTV
 
 CoveTV is based on the Android TV launcher from [CleanYourTV](https://github.com/Gathin23/cleanyourtv), by Gathin. The CleanYourTV portions are licensed under the MIT License.

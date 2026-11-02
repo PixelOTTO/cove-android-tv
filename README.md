@@ -77,6 +77,10 @@ Enter the pairing code when ADB prompts. Use the separate connection port shown 
 
 This repository contains APK releases and install guidance. It does not currently include the application source code.
 
+## License status
+
+This repository does not currently specify a separate license for CoveTV-specific modifications. The third-party notices identify the licenses for CleanYourTV portions and the Outfit typeface.
+
 ## Credits
 
 CoveTV is an unofficial community-modified build based on [CleanYourTV](https://github.com/Gathin23/cleanyourtv) by Gathin. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for CleanYourTV's MIT notice and [FONT-LICENSE-OFL.txt](FONT-LICENSE-OFL.txt) for the Outfit font license. CoveTV is not affiliated with or endorsed by the CleanYourTV project.
