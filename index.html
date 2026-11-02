@@ -132,7 +132,8 @@
       .wrap { width: min(var(--max), calc(100% - 32px)); }
       .nav { min-height: 66px; }
       .navlinks { gap: 13px; }
-      .navlinks a:not(.button) { display: none; }
+      .navlinks a:not(.button):not(.nav-github) { display: none; }
+      .navlinks .nav-github { display: inline; }
       .nav .button { min-height: 39px; padding-inline: 14px; font-size: .83rem; }
       .brand { font-size: 1rem; }
       .brand img { width: 34px; height: 34px; }
@@ -168,6 +169,7 @@
       <div class="navlinks">
         <a href="#features">Features</a>
         <a href="#install">Install</a>
+        <a class="nav-github" href="https://github.com/PixelOTTO/cove-android-tv">GitHub ↗</a>
         <a class="button primary small" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download</a>
       </div>
     </nav>
@@ -296,4 +298,5 @@ adb install -r "CoveTV-Android-TV-launcher.apk"</code>
   </script>
 </body>
 </html>
+
 
