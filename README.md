@@ -7,6 +7,7 @@ Cove is a customizable home launcher for Android TV and Google TV, designed for 
 ## Download
 
 Get the latest APK from [Releases](https://github.com/PixelOTTO/cove-android-tv/releases/latest).
+The APK keeps the same filename across releases: `Cove-Android-TV-launcher.apk`.
 
 ## Install
 
@@ -29,10 +30,10 @@ An AI assistant can guide you through installing Cove with Android Debug Bridge 
 
    ```sh
    adb devices
-   adb install -r "Cove-3.1.1-Android-TV-launcher.apk"
+   adb install -r "Cove-Android-TV-launcher.apk"
    ```
 
-   `-r` updates an existing Cove installation while keeping its data. If ADB lists more than one device, use `adb -s DEVICE_ID install -r "Cove-3.1.1-Android-TV-launcher.apk"` with the TV's ID from `adb devices`.
+   `-r` updates an existing Cove installation while keeping its data. If ADB lists more than one device, use `adb -s DEVICE_ID install -r "Cove-Android-TV-launcher.apk"` with the TV's ID from `adb devices`.
 
 If your TV supports **Wireless debugging** instead of ADB over USB, put the computer and TV on the same Wi-Fi network, enable Wireless debugging, then use the pairing address and code shown on the TV:
 
@@ -40,7 +41,7 @@ If your TV supports **Wireless debugging** instead of ADB over USB, put the comp
 adb pair TV_IP:PAIRING_PORT
 adb connect TV_IP:CONNECTION_PORT
 adb devices
-adb install -r "Cove-3.1.1-Android-TV-launcher.apk"
+adb install -r "Cove-Android-TV-launcher.apk"
 ```
 
 Replace the placeholders with the matching IP address and ports shown in the TV's Wireless debugging screen. Wireless debugging on Android TV requires Android 13 or later; menus and connection options vary by device. [Android's ADB guide](https://developer.android.com/tools/adb) has the official USB and Wi-Fi steps. Turn debugging off again when the install is done.
