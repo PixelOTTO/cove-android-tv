@@ -1,344 +1,339 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090b18">
-  <meta name="description" content="CoveTV is a customizable, remote-friendly launcher for Android TV and Google TV. Get the latest release and install it your way.">
-  <meta property="og:title" content="CoveTV — Your TV, your home screen">
-  <meta property="og:description" content="A calmer, more personal home screen for Android TV and Google TV.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pixelotto.github.io/cove-android-tv/">
-  <meta property="og:image" content="https://pixelotto.github.io/cove-android-tv/covetv-social-share-1200x630.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CoveTV — Your TV, your home screen">
-  <meta name="twitter:description" content="A calmer, more personal home screen for Android TV and Google TV.">
-  <meta name="twitter:image" content="https://pixelotto.github.io/cove-android-tv/covetv-social-share-1200x630.png">
-  <link rel="icon" type="image/png" href="covetv-vibrant-icon-512.png">
-  <title>CoveTV — Your TV, your home screen</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --ink: #f6f7ff;
-      --muted: #b6bdd3;
-      --dim: #858da9;
-      --night: #090b18;
-      --panel: #11152a;
-      --line: rgba(204, 216, 255, .13);
-      --cyan: #24d6ef;
-      --blue: #548cff;
-      --violet: #855cff;
-      --pink: #ff62a8;
-      --gold: #ffd54f;
-      --max: 1160px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(ellipse at 83% 8%, rgba(109, 71, 221, .22), transparent 35rem),
-        radial-gradient(ellipse at 8% 39%, rgba(14, 175, 213, .10), transparent 32rem),
-        var(--night);
-      line-height: 1.55;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
-    .topbar {
-      position: sticky; inset-block-start: 0; z-index: 10;
-      border-bottom: 1px solid rgba(204, 216, 255, .09);
-      background: rgba(9, 11, 24, .78); backdrop-filter: blur(20px);
-    }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 1.14rem; font-weight: 750; letter-spacing: -.035em; }
-    .brand img { width: 38px; height: 38px; border-radius: 12px; }
-    .brand span { background: linear-gradient(100deg, #f6f7ff 30%, #91eff7); color: transparent; background-clip: text; }
-    .navlinks { display: flex; align-items: center; gap: 30px; color: var(--muted); font-size: .91rem; }
-    .navlinks a:hover, .textlink:hover { color: white; }
-    .button {
-      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-      min-height: 48px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px;
-      font-weight: 700; font-size: .94rem; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button.primary { color: #06131c; background: linear-gradient(105deg, #38e0eb, #69cfff 54%, #aa82ff); box-shadow: 0 10px 34px rgba(48, 190, 234, .23); }
-    .button.primary:hover { box-shadow: 0 13px 38px rgba(87, 158, 255, .35); }
-    .button.secondary { border-color: rgba(208, 220, 255, .2); background: rgba(255,255,255,.045); color: var(--ink); }
-    .button.small { min-height: 40px; padding-inline: 16px; font-size: .87rem; }
-    .hero { padding: 91px 0 83px; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 68px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #a3f5fa; font-size: .76rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 23px; height: 1px; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
-    h1 { max-width: 650px; margin: 20px 0 22px; font-size: clamp(3.3rem, 5.7vw, 4.7rem); line-height: .99; letter-spacing: -.075em; }
-    .gradient-text { color: transparent; background: linear-gradient(95deg, #56e2ef 3%, #6e9bff 57%, #f079db); background-clip: text; }
-    .lead { max-width: 550px; margin: 0; color: var(--muted); font-size: clamp(1.06rem, 1.55vw, 1.22rem); line-height: 1.72; }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 32px; }
-    .fineprint { margin-top: 16px; color: var(--dim); font-size: .83rem; }
-    .fineprint a { text-decoration: underline; text-underline-offset: 3px; }
-    .visual { position: relative; isolation: isolate; }
-    .visual::before { content: ""; position: absolute; z-index: -1; inset: 9% -6% -12% 7%; border-radius: 42px; background: linear-gradient(135deg, rgba(26,219,238,.22), rgba(117,81,255,.35), rgba(255,80,164,.18)); filter: blur(48px); }
-    .visual-frame { position: relative; overflow: hidden; padding: 10px; border: 1px solid rgba(211, 222, 255, .23); border-radius: 25px; background: linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.035)); box-shadow: 0 34px 100px rgba(0,0,0,.48), inset 0 1px rgba(255,255,255,.14); transform: rotate(1.1deg); }
-    .visual-frame img { display: block; width: 100%; height: auto; border-radius: 17px; }
-    .floating-note { position: absolute; left: -28px; bottom: -24px; display: flex; align-items: center; gap: 11px; padding: 13px 17px; border: 1px solid rgba(212,224,255,.2); border-radius: 16px; background: rgba(17,21,42,.93); box-shadow: 0 18px 44px rgba(0,0,0,.3); backdrop-filter: blur(12px); font-size: .87rem; }
-    .check { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; color: #07131b; background: linear-gradient(130deg, var(--cyan), #8ee8ff); font-weight: 900; }
-    .section { padding: 92px 0; }
-    .section.alt { border-block: 1px solid rgba(204,216,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.035), rgba(255,255,255,.012)); }
-    .section-head { max-width: 690px; margin-bottom: 38px; }
-    .section-head.center { margin-inline: auto; text-align: center; }
-    .section-head.center .eyebrow { justify-content: center; }
-    h2 { margin: 15px 0 12px; font-size: clamp(2.25rem, 4.2vw, 3.55rem); line-height: 1.07; letter-spacing: -.06em; }
-    .section-head p { margin: 0; color: var(--muted); font-size: 1.05rem; }
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .screenshots-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; width: min(100%, 1040px); margin-inline: auto; }
-    .screenshot-card { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); }
-    .screenshot-media { display: grid; place-items: center; background: #080a14; }
-    .screenshot-media img { display: block; width: 100%; height: auto; }
-    .screenshot-card figcaption { padding: 16px 20px 20px; }
-    .screenshot-card figcaption strong { display: block; margin-bottom: 4px; font-size: 1.02rem; }
-    .screenshot-card figcaption span { display: block; color: var(--muted); font-size: .9rem; }
-    .card { min-height: 238px; padding: 26px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); }
-    .card-icon { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 27px; border: 1px solid rgba(115,210,255,.22); border-radius: 15px; background: linear-gradient(145deg, rgba(36,214,239,.17), rgba(133,92,255,.21)); color: #91eff7; font-size: 1.25rem; }
-    .card h3 { margin: 0 0 8px; font-size: 1.13rem; letter-spacing: -.02em; }
-    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
-    .update-band { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; padding: 34px; border: 1px solid rgba(108,176,255,.24); border-radius: 24px; background: radial-gradient(ellipse at 88% 10%, rgba(123,80,250,.22), transparent 45%), linear-gradient(110deg, rgba(22,184,218,.09), rgba(255,255,255,.035)); }
-    .update-band h3 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -.04em; }
-    .update-band p { max-width: 710px; margin: 0; color: var(--muted); }
-    .pill { display: inline-block; margin-bottom: 12px; padding: 4px 10px; border: 1px solid rgba(92,228,236,.28); border-radius: 999px; color: #a9f4f7; font-size: .73rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
-    .install-grid { display: grid; grid-template-columns: .83fr 1.17fr; gap: 54px; align-items: start; }
-    .steps { display: grid; gap: 20px; margin-top: 30px; }
-    .step { display: grid; grid-template-columns: 34px 1fr; gap: 13px; align-items: start; }
-    .step-num { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 50%; background: rgba(36,214,239,.12); color: #91eff7; font-weight: 800; font-size: .86rem; }
-    .step strong { display: block; margin: 2px 0 3px; font-size: .98rem; }
-    .step > div > span { display: block; color: var(--muted); font-size: .91rem; }
-    .install-panel { padding: 27px; border: 1px solid var(--line); border-radius: 22px; background: rgba(17,21,42,.85); box-shadow: 0 22px 60px rgba(0,0,0,.18); }
-    .install-panel h3 { margin: 0 0 6px; font-size: 1.22rem; }
-    .install-panel > p { margin: 0 0 18px; color: var(--muted); font-size: .92rem; }
-    .codebox { position: relative; margin: 12px 0; padding: 16px 94px 16px 17px; overflow-x: auto; border: 1px solid rgba(205,219,255,.11); border-radius: 13px; background: #080a14; }
-    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .codebox code { white-space: pre; color: #d8e8ff; font-size: .84rem; line-height: 1.8; }
-    .copy { position: absolute; top: 11px; right: 10px; min-height: 34px; padding: 0 11px; border: 1px solid rgba(206,220,255,.16); border-radius: 9px; color: var(--muted); background: #161b30; cursor: pointer; font-size: .77rem; }
-    .copy:hover { color: white; border-color: rgba(36,214,239,.55); }
-    .hint { margin-top: 13px !important; color: var(--dim) !important; font-size: .82rem !important; }
-    .textlink { color: #9debf4; text-decoration: underline; text-underline-offset: 3px; }
-    .requirements { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .requirements span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.025); font-size: .82rem; }
-    .credits { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; padding: 27px 0; border-top: 1px solid rgba(204,216,255,.1); color: var(--dim); font-size: .84rem; }
-    .credits p { max-width: 760px; margin: 0; }
-    .credits a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
-    .license-note { max-width: 760px; margin: 18px auto 0 !important; color: var(--dim) !important; font-size: .9rem !important; }
-    .footer-brand { color: var(--ink); font-weight: 750; white-space: nowrap; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-    :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
-    @media (min-width: 1081px) {
-      .hero-copy h1 .gradient-text { white-space: nowrap; }
-    }
-    @media (max-width: 1080px) {
-      .hero { padding: 68px 0 72px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-copy { max-width: none; }
-      .hero-copy h1 { max-width: none; }
-      .visual { width: min(660px, 92%); margin-inline: auto; }
-      .features { grid-template-columns: repeat(2, 1fr); }
-      .install-grid { grid-template-columns: 1fr; gap: 33px; }
-      .update-band { grid-template-columns: 1fr; }
-      .update-band .button { justify-self: start; }
-    }
-    @media (max-width: 620px) {
-      .wrap { width: min(var(--max), calc(100% - 32px)); }
-      .nav { min-height: 66px; }
-      .navlinks { gap: 13px; }
-      .navlinks a:not(.button):not(.nav-github) { display: none; }
-      .navlinks .nav-github { display: inline; }
-      .nav .button { min-height: 39px; padding-inline: 14px; font-size: .83rem; }
-      .brand { font-size: 1rem; }
-      .brand img { width: 34px; height: 34px; }
-      .hero { padding: 58px 0 64px; }
-      h1 { font-size: clamp(2rem, 9vw, 3.8rem); }
-      .lead { font-size: 1rem; }
-      .hero-actions { align-items: stretch; flex-direction: column; }
-      .hero-actions .button { width: 100%; }
-      .visual { width: calc(100% - 14px); margin-left: 10px; }
-      .floating-note { left: -9px; bottom: -20px; font-size: .78rem; }
-      .section { padding: 68px 0; }
-      .features { grid-template-columns: 1fr; }
-      .card { min-height: 0; }
-      .card-icon { margin-bottom: 18px; }
-      .update-band, .install-panel { padding: 22px; }
-      .codebox { padding: 49px 12px 13px; }
-      .copy { top: 9px; left: 10px; right: auto; }
-      .codebox code { font-size: .76rem; }
-      .credits { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="covetv-vibrant-icon-512.png">
+<meta name="description" content="CoveTV is a customizable, remote-friendly launcher for Android TV and Google TV. Download the APK and make it your home screen.">
+<meta name="theme-color" content="#080b19">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="CoveTV: your TV, your home screen">
+<meta property="og:description" content="A calmer, more personal home screen for Android TV and Google TV.">
+
+<meta property="og:image" content="https://pixelotto.github.io/cove-android-tv/covetv-social-share-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080b19; --panel:#11152b; --line:#2b3157; --text:#f1f4ff; --muted:#aab3d5;
+  --accent:#23d9e8; --accent-dim:#363568;
+  --cyan:#23d9e8; --blue:#4b9aff; --violet:#805dff; --pink:#f05fbd; --gold:#ffd34a;
+  --clock-color:#f5f7ff;
+  --font:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:radial-gradient(ellipse at 82% 18%,rgba(128,93,255,.14),transparent 43%),radial-gradient(ellipse at 12% 72%,rgba(35,217,232,.06),transparent 40%),var(--bg);color:var(--text);font:400 1.125rem/1.6 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-weight:600;line-height:1.08;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2.8rem,7vw,5.4rem);font-weight:700}
+h2{font-size:clamp(2rem,4vw,3rem);max-width:18ch}
+h3{font-size:1.35rem;letter-spacing:-.01em}
+p{margin:0}
+.lede{color:var(--muted);font-size:1.25rem;max-width:34ch}
+
+/* nav */
+header{position:sticky;top:0;z-index:5;background:rgba(8,11,25,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:1.5rem;min-height:64px}
+.brand{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:1.25rem;text-decoration:none;margin-right:auto}
+.logo{width:34px;height:34px;border-radius:9px;display:block;object-fit:cover;box-shadow:0 0 18px rgba(128,93,255,.28)}
+nav{display:flex;gap:1.4rem}
+nav a{color:var(--muted);text-decoration:none;font-size:1rem}
+nav a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:999px;font:600 1rem var(--font);text-decoration:none;border:0;cursor:pointer;background:linear-gradient(105deg,var(--cyan),var(--blue) 48%,var(--violet) 82%,var(--pink));color:#080b19;box-shadow:0 10px 28px rgba(75,154,255,.18);transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn.sm{padding:.5rem 1.1rem;font-size:.95rem}
+@media (max-width:760px){nav a:not(.btn):not(.github-link){display:none}}
+
+/* hero */
+.hero{padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,6vw,5rem);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1 span{background:linear-gradient(100deg,var(--cyan),var(--blue) 38%,var(--violet) 70%,var(--pink));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.hero .lede{margin:1.5rem 0 2rem}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.fine{margin-top:1.2rem;color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+
+/* the TV: the screensaver bounces inside it */
+.tv{position:relative}
+.screen{position:relative;aspect-ratio:16/9;background:#000;border:10px solid #28244f;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(128,93,255,.4),inset 0 0 0 1px rgba(255,255,255,.08)}
+.clock{position:absolute;left:0;top:0;will-change:transform;color:var(--clock-color);line-height:1.05;padding:0;user-select:none}
+.clock b{display:flex;align-items:baseline;gap:.18em;font-weight:300;font-size:clamp(2.2rem,6vw,5rem);letter-spacing:-.04em;white-space:nowrap}
+.clock #t{display:inline;font-size:inherit;letter-spacing:inherit;text-transform:none;color:inherit}
+.clock b small{font-size:.19em;font-weight:500;letter-spacing:.12em;opacity:.69}
+.clock #d{display:block;margin-top:.45em;font-size:clamp(.56rem,1.2vw,.95rem);letter-spacing:.14em;text-transform:uppercase;opacity:.55;white-space:nowrap}
+
+.stand{position:relative;width:36%;height:34px;margin:0 auto}
+.stand::before{content:"";position:absolute;top:0;left:34%;width:32%;height:26px;background:#dbe7f4;clip-path:polygon(28% 0,72% 0,100% 100%,0 100%)}
+.stand::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:10px;border-radius:999px;background:#dbe7f4}
+.cap{margin-top:.9rem;color:var(--muted);font-size:.9rem;text-align:center}
+
+/* placeholders */
+
+
+
+section{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+section>.wrap>h2{margin-bottom:2.5rem}
+
+/* features: plain columns, no card boxes */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3.5rem)}
+.features>div{border-top:3px solid var(--accent);padding-top:1.2rem}
+.features p{color:var(--muted);margin-top:.7rem}
+@media (max-width:800px){.features{grid-template-columns:1fr}}
+
+/* screenshots */
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;align-items:start}
+.shots img{display:block;width:100%;height:auto;border-radius:12px}
+.shots figcaption strong{display:block;margin-bottom:.2rem;color:var(--text)}
+.shots figcaption{margin-top:.5rem;color:var(--muted);font-size:.95rem}
+.shots figure{margin:0}
+@media (max-width:800px){.shots{grid-template-columns:1fr}}
+
+/* install: a real sequence, so numbered */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1.6rem;max-width:680px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:3.2rem 1fr;gap:1rem;counter-increment:s}
+.steps li::before{content:counter(s);font-size:2.6rem;font-weight:300;line-height:1;color:var(--accent)}
+.steps p{color:var(--muted);margin-top:.3rem}
+.adb{margin-top:3.5rem;max-width:760px}
+.adb p{color:var(--muted);margin:.7rem 0 1.2rem}
+.code{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;font:500 .98rem/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-x:auto;white-space:pre}
+.code button{position:absolute;top:.6rem;right:.6rem}
+.note{max-width:62ch;color:var(--muted)}
+.note a{color:var(--text)}
+
+/* credits */
+.credits{display:grid;grid-template-columns:1fr 1fr;gap:2rem 4rem;color:var(--muted);font-size:1rem}
+.credits h3{color:var(--text);font-size:1.1rem;margin-bottom:.5rem}
+.credits a{color:var(--text)}
+@media (max-width:800px){.credits{grid-template-columns:1fr}}
+footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="CoveTV home">
-        <img src="covetv-vibrant-icon-512.png" alt="">
-        <span>CoveTV</span>
-      </a>
-      <div class="navlinks">
-        <a href="#features">Features</a>
-        <a href="#screenshots">Screenshots</a>
-        <a href="#install">Install</a>
-        <a class="nav-github" href="https://github.com/PixelOTTO/cove-android-tv">GitHub ↗</a>
-        <a class="button primary small" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download</a>
-      </div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img class="logo" src="covetv-vibrant-icon-512.png" width="34" height="34" alt="">
+      CoveTV
+    </a>
+    <nav aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#install">Install</a>
+      <a href="#credits">Credits</a>
+      <a class="github-link" href="https://github.com/PixelOTTO/cove-android-tv">GitHub ↗</a>
+      <a class="btn sm" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-grid wrap">
-        <div class="hero-copy">
-          <span class="eyebrow">Made for Android TV</span>
-          <h1>Your TV.<br><span class="gradient-text">Your home screen.</span></h1>
-          <p class="lead">A calmer, more personal place to start. CoveTV puts your apps up front, with a layout and look you can make your own.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk" aria-label="Download the latest CoveTV APK">Download CoveTV <span aria-hidden="true">↓</span></a>
-            <a class="button secondary" href="#install">How to install <span aria-hidden="true">↘</span></a>
-          </div>
-          <p class="fineprint">For Android TV and Google TV · Android 8.0 or later · <a href="https://github.com/PixelOTTO/cove-android-tv/releases/latest">View all releases</a></p>
-          <p class="fineprint">Latest release: <a href="https://github.com/PixelOTTO/cove-android-tv/releases/tag/v3.2.0">CoveTV 3.2.0</a> · <a href="https://www.virustotal.com/gui/file/304ee6ad3bba7da9df79951c7c35eec8c2f3fc58c1e5a77d8dc2315deccf7aae?nocache=1">VirusTotal report</a></p>
-        </div>
-        <div class="visual" aria-label="CoveTV vibrant app banner preview">
-          <div class="visual-frame"><img src="covetv-vibrant-banner-1280x720.png" alt="CoveTV TV launcher banner with its colorful television icon"></div>
-          <div class="floating-note"><span class="check" aria-hidden="true">✓</span><span>Built for the big screen<br><strong>and your TV remote</strong></span></div>
-        </div>
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1>Your TV.<br><span>Your home screen.</span></h1>
+      <p class="lede">CoveTV puts your apps up front and lets you shape the layout, the look and the remote controls around your space.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download the APK</a>
+        <a class="btn ghost" href="#install">How to install</a>
       </div>
-    </section>
+      <p class="fine">Free · Android TV and Google TV · Android 8.0 or later</p>
+      <p class="fine">Latest release: <a href="https://github.com/PixelOTTO/cove-android-tv/releases/tag/v3.2.0">CoveTV 3.2.0</a> · <a href="https://www.virustotal.com/gui/file/304ee6ad3bba7da9df79951c7c35eec8c2f3fc58c1e5a77d8dc2315deccf7aae?nocache=1">VirusTotal report</a></p>
+    </div>
+    <div class="tv">
+      <div class="screen" id="screen" role="img" aria-label="CoveTV screensaver: a thin clock and date drifting across a full black screen">
+        <div class="clock" id="clock"><b><span id="t">4:41</span><small id="ap">PM</small></b><span id="d">MONDAY 2 NOVEMBER</span></div>
+      </div>
+      <div class="stand" aria-hidden="true"></div>
+      <p class="cap">The CoveTV clock screensaver, running live.</p>
+    </div>
+  </div>
 
-    <section class="section alt" id="features">
-      <div class="wrap">
-        <div class="section-head center">
-          <span class="eyebrow">A better place to begin</span>
-          <h2>All your apps.<br><span class="gradient-text">A little more you.</span></h2>
-          <p>Keep the things you use close, shape the screen around your space, and move through it all with your remote.</p>
-        </div>
-        <div class="features">
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">▦</div>
-            <h3>Make the layout yours</h3>
-            <p>Choose how your apps are arranged, tune the grid, and keep favorites where you can reach them.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">◐</div>
-            <h3>Set the mood</h3>
-            <p>Personalize your screen with themes, wallpapers, and the display options that feel right at home.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">✦</div>
-            <h3>Made for the remote</h3>
-            <p>Clear focus, thoughtful motion, and comfortable controls make it easy to get around from the couch.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="screenshots">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">A closer look</span>
-          <h2>Made for real <span class="gradient-text">TV time.</span></h2>
-          <p>Both images are stitched previews assembled from captures at different scroll positions; the TV interface can’t zoom out to show everything at once.</p>
-        </div>
-        <div class="screenshots-grid">
-          <figure class="screenshot-card">
-            <div class="screenshot-media"><img src="screenshots/home-and-shortcuts.png" alt="CoveTV home screen and shortcuts panel, stitched into one preview" loading="lazy" decoding="async"></div>
-            <figcaption><strong>Home and shortcuts</strong><span>See your apps, everyday controls, and weather at a glance.</span></figcaption>
-          </figure>
-          <figure class="screenshot-card">
-            <div class="screenshot-media"><img src="screenshots/launcher-settings.png" alt="CoveTV launcher settings for layout, wallpaper, motion, and update options" loading="lazy" decoding="async"></div>
-            <figcaption><strong>Settings that make it yours</strong><span>Choose the layout and look, then tune remote focus and update checks.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="wrap">
-        <div class="update-band">
-          <div>
-            <span class="pill">Optional update checks</span>
-            <h3>Stay current on your terms.</h3>
-            <p>CoveTV can check its GitHub releases for a newer version and let you know when one is available. You can turn automatic checks off in Settings. Android will ask you to confirm before installing an update.</p>
-          </div>
-          <a class="button secondary" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest">See what’s new <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="install">
-      <div class="install-grid wrap">
+  <section id="features">
+    <div class="wrap">
+      <h2>All your apps. A little more you.</h2>
+      <div class="features">
         <div>
-          <span class="eyebrow">A few simple steps</span>
-          <h2>Bring CoveTV<br><span class="gradient-text">to your TV.</span></h2>
-          <p class="lead">Download the latest release, install it on your TV, then choose CoveTV as your Home app.</p>
-          <div class="steps">
-            <div class="step"><span class="step-num">1</span><div><strong>Get the APK</strong><span>Download directly on your TV, or save it to a computer and transfer it over USB or your home network.</span></div></div>
-            <div class="step"><span class="step-num">2</span><div><strong>Open and install</strong><span>Use a file manager to open the APK. If prompted, allow that app to install unknown apps, then return and continue.</span></div></div>
-            <div class="step"><span class="step-num">3</span><div><strong>Make it Home</strong><span>Choose CoveTV when Android asks which Home app to use. You can change the default later in CoveTV Settings.</span></div></div>
-          </div>
-          <div class="requirements"><span>Android TV</span><span>Google TV</span><span>Android 8.0+</span></div>
+          <h3>Make the layout yours</h3>
+          <p>Choose how apps are arranged, tune the grid and keep your favorites on a dock within easy reach.</p>
         </div>
-        <div class="install-panel">
-          <h3>Installing with ADB?</h3>
-          <p>For a computer-to-TV install, download the APK and use Android Platform Tools. This filename stays the same for every release.</p>
-          <div class="codebox">
-            <code>adb devices
-adb install -r "CoveTV-Android-TV-launcher.apk"</code>
-            <button class="copy" type="button" data-copy="adb devices`nadb install -r &quot;CoveTV-Android-TV-launcher.apk&quot;">Copy commands</button>
-          </div>
-          <p class="hint">For wireless ADB, connect your TV and computer to the same Wi-Fi network. Pair first if your TV uses Android 13+ Wireless debugging, then connect with the address and port shown on the TV.</p>
-          <p class="hint">Need a hand? <a class="textlink" href="https://github.com/PixelOTTO/cove-android-tv#quick-start-with-an-ai-assistant">Open the AI-assisted install guide</a> for a ready-to-use prompt and full instructions.</p>
-          <a class="button primary small" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download latest APK <span aria-hidden="true">↓</span></a>
+        <div>
+          <h3>Set the mood</h3>
+          <p>Pick a theme and a wallpaper, and adjust the weather and clock until it feels right for your room.</p>
+        </div>
+        <div>
+          <h3>Made for the remote</h3>
+          <p>Clear focus, calm motion and comfortable controls make it easy to get around from the couch.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="wrap section-head center">
-        <span class="eyebrow">Community-made and transparent about its roots</span>
-        <h2>Clear about its roots.</h2>
-        <p>CoveTV is an unofficial community-maintained build based on CleanYourTV by Gathin and includes code from Free My TV by its contributors. This repository publishes APK releases, release notes, and notices; the CoveTV Android app source code is not currently published here. CoveTV is not affiliated with or endorsed by either project.</p>
-        <p class="license-note">CoveTV-specific contributions maintained by PixelOTTO are licensed under MIT; included Free My TV code and CleanYourTV portions retain their upstream MIT notices, and Outfit is under OFL 1.1. See the <a class="textlink" href="https://github.com/PixelOTTO/cove-android-tv/blob/main/LICENSE">MIT license</a>, <a class="textlink" href="https://github.com/PixelOTTO/cove-android-tv/blob/main/THIRD-PARTY-NOTICES.md">third-party notices</a>, and <a class="textlink" href="https://github.com/PixelOTTO/cove-android-tv/blob/main/FONT-LICENSE-OFL.txt">font license</a>.</p>
-        <div class="hero-actions" style="justify-content:center">
-          <a class="button secondary" href="https://github.com/PixelOTTO/cove-android-tv">Explore the GitHub repo <span aria-hidden="true">↗</span></a>
-          <a class="button secondary" href="https://github.com/PixelOTTO/cove-android-tv/releases">Release history <span aria-hidden="true">↗</span></a>
+  <section id="screenshots">
+    <div class="wrap">
+      <h2>Made for real TV time.</h2>
+      <p class="lede">These previews are stitched together from captures at different scroll positions to show more of each screen.</p>
+      <div class="shots">
+        <figure>
+          <img src="screenshots/home-and-shortcuts.png" alt="CoveTV home screen, shortcuts, and weather in one stitched preview" loading="lazy" decoding="async">
+          <figcaption><strong>Home, shortcuts, and weather</strong>Stitched together from captures at different scroll positions.</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/launcher-settings.png" alt="CoveTV launcher settings stitched together across the settings page" loading="lazy" decoding="async">
+          <figcaption><strong>Launcher settings</strong>Stitched together from captures while scrolling through settings.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>Bring CoveTV to your TV.</h2>
+      <ol class="steps">
+        <li><div><h3>Get the APK</h3><p>Download it directly on your TV, or save it to a computer and move it over USB or your home network.</p></div></li>
+        <li><div><h3>Open and install</h3><p>Open the file with a file manager. If Android asks, allow that app to install unknown apps, then come back and continue.</p></div></li>
+        <li><div><h3>Make it Home</h3><p>Choose CoveTV when Android asks which Home app to use. You can change this later in CoveTV Settings.</p></div></li>
+      </ol>
+      <div class="actions" style="margin-top:2rem">
+        <a class="btn" href="https://github.com/PixelOTTO/cove-android-tv/releases/latest/download/CoveTV-Android-TV-launcher.apk">Download the latest APK</a>
+        <a class="btn ghost" href="https://github.com/PixelOTTO/cove-android-tv/releases">All releases</a>
+      </div>
+
+      <div class="adb">
+        <h3>Installing with ADB?</h3>
+        <p>Use Android Platform Tools on a computer. The file name stays the same for every release, and <code>-r</code> updates an existing install and keeps its data.</p>
+        <div class="code"><button class="btn ghost sm" id="copy" type="button">Copy</button><span id="cmd">adb devices
+adb install -r "CoveTV-Android-TV-launcher.apk"</span></div>
+        <p>For wireless ADB, put the TV and computer on the same Wi-Fi network. If your TV runs Android 13 or later with Wireless debugging, pair first, then connect with the address and port shown on the TV. Turn debugging off when you’re done. Need more help? <a class="note" href="https://github.com/PixelOTTO/cove-android-tv#quick-start-with-an-ai-assistant">Open the AI-assisted install guide</a>.</p>
+      </div>
+
+      <p class="note" style="margin-top:3rem"><strong style="color:var(--text)">Updates are optional.</strong> CoveTV can check its GitHub releases for a newer version and tell you when one is available. You can turn the checks off in Settings, and Android always asks before installing an update.</p>
+    </div>
+  </section>
+
+  <section id="credits">
+    <div class="wrap">
+      <h2>Community-made, and clear about where it comes from.</h2>
+      <div class="credits">
+        <div>
+          <h3>What this is</h3>
+          <p>CoveTV is an unofficial community-modified build. It isn’t affiliated with or endorsed by CleanYourTV or Free My TV, and it isn’t distributed through Google Play.</p>
+        </div>
+        <div>
+          <h3>Built on</h3>
+          <p><a href="https://github.com/Gathin23/cleanyourtv">CleanYourTV</a> by Gathin and code from <a href="https://github.com/simbasjungles/free-my-tv">Free My TV</a> by simbasjungles, both MIT licensed. The Outfit font is used under the SIL Open Font License.</p>
+        </div>
+        <div>
+          <h3>Licenses</h3>
+          <p>CoveTV is released under the MIT License. Read the <a href="https://github.com/PixelOTTO/cove-android-tv/blob/main/LICENSE">license</a> and the <a href="https://github.com/PixelOTTO/cove-android-tv/blob/main/THIRD-PARTY-NOTICES.md">third-party notices</a>.</p>
+        </div>
+        <div>
+          <h3>Follow along</h3>
+          <p>See the <a href="https://github.com/PixelOTTO/cove-android-tv">GitHub repository</a> and the <a href="https://github.com/PixelOTTO/cove-android-tv/releases">release history</a>.</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer class="wrap credits">
-    <p><span class="footer-brand">CoveTV</span> · Android TV launcher<br>Based on <a href="https://github.com/Gathin23/cleanyourtv">CleanYourTV</a> by Gathin and includes code from <a href="https://github.com/simbasjungles/free-my-tv">Free My TV</a>. CoveTV-specific contributions maintained by PixelOTTO are MIT licensed; both projects’ portions retain their upstream MIT notices, and Outfit is OFL 1.1. See the <a href="https://github.com/PixelOTTO/cove-android-tv/blob/main/LICENSE">MIT license</a>, <a href="https://github.com/PixelOTTO/cove-android-tv/blob/main/THIRD-PARTY-NOTICES.md">third-party notices</a>, and <a href="https://github.com/PixelOTTO/cove-android-tv/blob/main/FONT-LICENSE-OFL.txt">font license</a>.</p>
-    <a href="https://github.com/PixelOTTO/cove-android-tv">Made with care · PixelOTTO</a>
-  </footer>
-  <script>
-    document.querySelectorAll("[data-copy]").forEach((button) => {
-      button.addEventListener("click", async () => {
-        const value = button.dataset.copy.replaceAll("`n", "\n").replaceAll("&quot;", '"');
-        try {
-          await navigator.clipboard.writeText(value);
-          const original = button.textContent;
-          button.textContent = "Copied";
-          window.setTimeout(() => { button.textContent = original; }, 1600);
-        } catch {
-          button.textContent = "Copy unavailable";
-          window.setTimeout(() => { button.textContent = "Copy commands"; }, 1800);
-        }
-      });
-    });
-  </script>
+<footer>
+  <div class="wrap">
+    <span>CoveTV · Android TV launcher</span>
+    <a href="https://github.com/PixelOTTO/cove-android-tv">Made with care by PixelOTTO</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, screen=document.getElementById('screen'), clock=document.getElementById('clock');
+  var t=document.getElementById('t'), ap=document.getElementById('ap'), d=document.getElementById('d');
+
+  function tick(){
+    var n=new Date(), h=n.getHours(), m=n.getMinutes();
+    t.textContent=((h%12)||12)+':'+(m<10?'0':'')+m;
+    ap.textContent=h>=12?'PM':'AM';
+    d.textContent=n.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'});
+  }
+  tick(); setInterval(tick,15000);
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var brandColors=['#f5f7ff','#54e5ff','#b594ff','#ff8bd5','#ffcc68','#89e8c0'];
+  var colorIndex=0;
+  function setBrandColor(){
+    colorIndex=(colorIndex+1)%brandColors.length;
+    root.style.setProperty('--clock-color',brandColors[colorIndex]);
+  }
+
+  var x=0,y=0,w=0,h=0,sw=0,sh=0,vx=1,vy=1,speedX=92,speedY=68,last=0;
+  function measure(){
+    sw=screen.clientWidth; sh=screen.clientHeight;
+    var r=clock.getBoundingClientRect(); w=r.width; h=r.height;
+    var marginX=Math.min(24,Math.max(0,(sw-w)/2));
+    var marginY=Math.min(24,Math.max(0,(sh-h)/2));
+    x=Math.max(marginX,Math.min(x,Math.max(marginX,sw-w-marginX)));
+    y=Math.max(marginY,Math.min(y,Math.max(marginY,sh-h-marginY)));
+  }
+  measure();
+  var marginX=Math.min(24,Math.max(0,(sw-w)/2));
+  var marginY=Math.min(24,Math.max(0,(sh-h)/2));
+  x=marginX+Math.max(0,sw-w-2*marginX)*.22;
+  y=marginY+Math.max(0,sh-h-2*marginY)*.26;
+  window.addEventListener('resize',measure);
+  if(reduce){
+    x=(sw-w)/2; y=(sh-h)/2;
+    clock.style.transform='translate('+x+'px,'+y+'px)';
+    return;
+  }
+
+  function frame(ts){
+    if(!last) last=ts;
+    var dt=Math.min(.05,(ts-last)/1000); last=ts;
+    var scale=sw/600;
+    x+=vx*speedX*scale*dt; y+=vy*speedY*scale*dt;
+    var marginX=Math.min(24,Math.max(0,(sw-w)/2));
+    var marginY=Math.min(24,Math.max(0,(sh-h)/2));
+    var minX=marginX,maxX=Math.max(minX,sw-w-marginX);
+    var minY=marginY,maxY=Math.max(minY,sh-h-marginY);
+    var hit=false;
+    if(x<=minX){x=minX;vx=1;hit=true} else if(x>=maxX){x=maxX;vx=-1;hit=true}
+    if(y<=minY){y=minY;vy=1;hit=true} else if(y>=maxY){y=maxY;vy=-1;hit=true}
+    if(hit)setBrandColor();
+    clock.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  document.addEventListener('visibilitychange',function(){last=0});
+})();
+
+(function(){
+  var b=document.getElementById('copy'), c=document.getElementById('cmd');
+  if(!b) return;
+  b.addEventListener('click',function(){
+    var text=c.textContent;
+    function ok(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)}
+    try{
+      navigator.clipboard.writeText(text).then(ok,function(){b.textContent='Select and copy'});
+    }catch(e){b.textContent='Select and copy'}
+  });
+})();
+</script>
 </body>
 </html>
+
+
+
+
+
 
 
