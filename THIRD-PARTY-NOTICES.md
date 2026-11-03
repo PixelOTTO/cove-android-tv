@@ -2,7 +2,7 @@
 
 ## CoveTV-specific changes
 
-This repository does not currently specify a separate license for CoveTV-specific modifications. The notices below identify licenses for CleanYourTV portions and the Outfit typeface.
+CoveTV-specific original contributions maintained by PixelOTTO are licensed under the MIT License; see [LICENSE](LICENSE). The CleanYourTV portions and Outfit typeface retain the third-party licenses listed below.
 
 ## CleanYourTV
 
