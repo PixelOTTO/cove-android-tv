@@ -79,10 +79,10 @@ This repository contains APK releases and install guidance. It does not currentl
 
 ## License
 
-CoveTV-specific contributions maintained by PixelOTTO are licensed under the MIT License; see [LICENSE](LICENSE). CleanYourTV portions retain Gathin's upstream MIT notice, and the Outfit typeface is licensed under OFL 1.1; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and [FONT-LICENSE-OFL.txt](FONT-LICENSE-OFL.txt).
+CoveTV-specific contributions maintained by PixelOTTO are licensed under the MIT License; see [LICENSE](LICENSE). CleanYourTV and Free My TV portions retain their upstream MIT notices, and the Outfit typeface is licensed under OFL 1.1; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and [FONT-LICENSE-OFL.txt](FONT-LICENSE-OFL.txt).
 
 ## Credits
 
-CoveTV is an unofficial community-modified build based on [CleanYourTV](https://github.com/Gathin23/cleanyourtv) by Gathin. CoveTV-specific contributions are licensed under [MIT](LICENSE); CleanYourTV's upstream MIT notice and the Outfit font's OFL 1.1 license are detailed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and [FONT-LICENSE-OFL.txt](FONT-LICENSE-OFL.txt). CoveTV is not affiliated with or endorsed by the CleanYourTV project.
+CoveTV is an unofficial community-modified build based on [CleanYourTV](https://github.com/Gathin23/cleanyourtv) by Gathin and includes code from [Free My TV](https://github.com/simbasjungles/free-my-tv). CoveTV-specific contributions are licensed under [MIT](LICENSE); both projects' upstream MIT notices and the Outfit font's OFL 1.1 license are detailed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and [FONT-LICENSE-OFL.txt](FONT-LICENSE-OFL.txt). CoveTV is not affiliated with or endorsed by either project.
 
-The AI-assisted install guide was informed by the setup examples in [CleanYourTV UI](https://github.com/matheus-caldeira/cleanyourtv-ui) and [Free My TV](https://github.com/simbasjungles/free-my-tv). CoveTV does not include Free My TV code.
+The AI-assisted install guide was informed by the setup examples in [CleanYourTV UI](https://github.com/matheus-caldeira/cleanyourtv-ui) and [Free My TV](https://github.com/simbasjungles/free-my-tv). CoveTV also includes some Free My TV code; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for its MIT license and attribution.
