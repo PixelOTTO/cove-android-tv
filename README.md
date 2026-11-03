@@ -1,4 +1,4 @@
-# CoveTV for Android TV
+# CoveTV for Android TV Link: https://pixelotto.github.io/cove-android-tv/ 
 
 CoveTV is a customizable home launcher for Android TV and Google TV, designed for remote control.
 
