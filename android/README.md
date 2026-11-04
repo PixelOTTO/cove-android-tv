@@ -14,8 +14,8 @@ The APK is written to `app/build/outputs/apk/release/`. The build uses Gradle's 
 
 ## Project contents
 
-- `app/src/main/` — launcher source, resources, wallpapers, icons, and bundled data
-- `app/src/test/` — existing JVM tests
+- `app/src/main/`  launcher source, resources, wallpapers, icons, and bundled data
+- `app/src/test/`  existing JVM tests
 - `gradle/`, `gradlew`, and `gradlew.bat` — Gradle wrapper
 - `LICENSE` and `THIRDmPARTY NOTICES.md` — project and upstream license information
 - `FONT LICENSE OFL.txt` — Outfit typeface license
