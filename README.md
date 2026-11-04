@@ -77,7 +77,7 @@ Enter the pairing code when ADB prompts. Use the separate connection port shown 
 - Weather and clock options
 - Remote-friendly focus, motion, and highlight settings
 
-This repository contains APK releases and install guidance. It does not currently include the application source code.
+The current CoveTV 3.2.4 application source is available in the [v3.2.4 release assets](https://github.com/PixelOTTO/cove-android-tv/releases/download/v3.2.4/CoveTV-3.2.4-Source.zip). The package excludes signing keys; locally built APKs will have a different signature from the official release.
 
 ## License
 
