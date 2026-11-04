@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FF090B10" android:fillViewport="true" android:scrollbars="none">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="64dp" android:paddingEnd="64dp" android:paddingTop="42dp" android:paddingBottom="54dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C O V E T V   /   PERSONALIZE" android:textColor="#FF91B8FF" android:textSize="13sp" android:fontFamily="@string/font_medium" android:letterSpacing="0.12" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9dp" android:text="Launcher settings" android:textColor="#FFFFFFFF" android:textSize="38sp" android:fontFamily="@string/font_light" android:letterSpacing="-0.02" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Make your home screen feel like yours. Use the remote to explore each section." android:textColor="#FFAAB3C2" android:textSize="16sp" android:fontFamily="@string/font_regular" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="26dp" android:orientation="horizontal" android:baselineAligned="false">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="12dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/settings_panel_bg" android:orientation="vertical" android:padding="22dp">
+                    <TextView style="@style/SettingsSectionTitle" android:text="HOME LAYOUT" />
+                    <TextView style="@style/SettingsSectionHint" android:text="Choose how your apps fit on screen and shape the favorites dock." />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Apps across the screen" style="@style/SettingsFieldLabel" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                        <TextView android:id="@+id/columns4" style="@style/SettingsColumnChoice" android:text="4" />
+                        <TextView android:id="@+id/columns5" style="@style/SettingsColumnChoice" android:text="5" />
+                        <TextView android:id="@+id/columns6" style="@style/SettingsColumnChoice" android:text="6" />
+                        <TextView android:id="@+id/columns7" style="@style/SettingsColumnChoice" android:text="7" />
+                    </LinearLayout>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="Rows below favorites" style="@style/SettingsFieldLabel" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                        <TextView android:id="@+id/rows0" style="@style/SettingsColumnChoice" android:text="0" />
+                        <TextView android:id="@+id/rows1" style="@style/SettingsColumnChoice" android:text="1" />
+                        <TextView android:id="@+id/rows2" style="@style/SettingsColumnChoice" android:text="2" />
+                        <TextView android:id="@+id/rows3" style="@style/SettingsColumnChoice" android:text="3" />
+                    </LinearLayout>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="Dock background" style="@style/SettingsFieldLabel" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                        <TextView android:id="@+id/dock100" style="@style/SettingsColumnChoice" android:text="100%" />
+                        <TextView android:id="@+id/dock70" style="@style/SettingsColumnChoice" android:text="70%" />
+                        <TextView android:id="@+id/dock50" style="@style/SettingsColumnChoice" android:text="50%" />
+                        <TextView android:id="@+id/dock30" style="@style/SettingsColumnChoice" android:text="30%" />
+                    </LinearLayout>
+                    <TextView android:id="@+id/dockNamesChoice" style="@style/SettingsRow" android:layout_marginTop="14dp" />
+                    <TextView android:id="@+id/reorderChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" android:text="Reorder apps" android:visibility="gone" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/settings_panel_bg" android:orientation="vertical" android:padding="22dp" android:layout_marginTop="20dp">
+                    <TextView style="@style/SettingsSectionTitle" android:text="MOTION &amp; FOCUS" />
+                    <TextView style="@style/SettingsSectionHint" android:text="Tune the movement and highlight to match your room and remote." />
+                    <TextView android:id="@+id/animationsChoice" style="@style/SettingsRow" android:layout_marginTop="16dp" />
+                    <TextView android:id="@+id/focusSpeedChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/focusAccentChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/featuredShelfChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/focusHighlightChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/focusSoundChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/advancedChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:text="Advanced effects may feel slower on some TV hardware." android:textColor="#FF929CAB" android:textSize="13sp" android:fontFamily="@string/font_regular" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/settings_panel_bg" android:orientation="vertical" android:padding="22dp">
+                    <TextView style="@style/SettingsSectionTitle" android:text="LOOK &amp; WALLPAPER" />
+                    <TextView style="@style/SettingsSectionHint" android:text="Set the mood with a theme, a favorite scene, and your local weather." />
+                    <TextView android:id="@+id/themeChoice" style="@style/SettingsRow" android:layout_marginTop="16dp" />
+                    <TextView android:id="@+id/wallpaperChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/wallpaperScheduleChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" android:visibility="gone" android:text="Wallpaper schedule" />
+                    <TextView android:id="@+id/weatherLocationChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/weatherUnitChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/settings_panel_bg" android:orientation="vertical" android:padding="22dp" android:layout_marginTop="20dp">
+                    <TextView style="@style/SettingsSectionTitle" android:text="TV &amp; LAUNCHER" />
+                    <TextView style="@style/SettingsSectionHint" android:text="Choose your default home app or open your TV's system settings." />
+                    <TextView android:id="@+id/followThemeChoice" style="@style/SettingsRow" android:layout_marginTop="16dp" android:text="Follow theme defaults" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:text="Reset personal overrides so the selected theme controls the layout and effects." android:textColor="#FF929CAB" android:textSize="13sp" android:fontFamily="@string/font_regular" />
+                    <TextView android:id="@+id/defaultHomeChoice" style="@style/SettingsRow" android:layout_marginTop="14dp" android:text="Set default home" />
+                    <TextView android:id="@+id/tvSettingsChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" android:text="TV system settings" />
+                    <TextView android:id="@+id/backupSettingsChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" android:text="@string/settings_backup" />
+                    <TextView android:id="@+id/restoreSettingsChoice" style="@style/SettingsRow" android:layout_marginTop="8dp" android:text="@string/settings_restore" />
+                    <TextView style="@style/SettingsSectionHint" android:layout_marginTop="7dp" android:text="@string/settings_backup_hint" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

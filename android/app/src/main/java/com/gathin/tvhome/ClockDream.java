@@ -1,0 +1,46 @@
+package com.gathin.tvhome;
+
+import android.service.dreams.DreamService;
+import android.view.View;
+
+/**
+ * Screensaver: the launcher's thin clock and date on black, over a slow ambient glow (ClockScene).
+ * No network, no images: cheap enough for a 1 GB TV.
+ */
+public class ClockDream extends DreamService {
+
+    private ClockScene scene;
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        setInteractive(false);   // any key wakes the TV back to where it was
+        setFullscreen(true);
+        setScreenBright(false);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        setContentView(R.layout.dream_clock);
+        getWindow().getDecorView().setSystemUiVisibility(ClockActivity.immersiveFlags());
+        scene = new ClockScene(getWindow().getDecorView());
+    }
+
+    @Override
+    public void onDreamingStarted() {
+        super.onDreamingStarted();
+        scene.start();
+    }
+
+    @Override
+    public void onDreamingStopped() {
+        scene.stop();
+        super.onDreamingStopped();
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        if (scene != null) scene.stop();
+        super.onDetachedFromWindow();
+    }
+}

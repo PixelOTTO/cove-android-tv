@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="18dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <TextView
+        android:id="@+id/shortcutsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/shortcuts"
+        android:textColor="#E6FFFFFF"
+        android:textSize="18sp"
+        android:fontFamily="@string/font_medium" />
+
+    <LinearLayout
+        android:id="@+id/shortcutsRow"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/shortcutAllApps"
+            style="@style/ShortcutButton"
+            android:text="@string/all_apps"
+            android:drawableTop="@drawable/ic_apps"
+            android:nextFocusRight="@+id/shortcutHomeSettings"
+            android:nextFocusDown="@id/weatherPanel"
+            android:nextFocusUp="@+id/grid" />
+
+        <TextView
+            android:id="@+id/shortcutHomeSettings"
+            style="@style/ShortcutButton"
+            android:layout_marginStart="8dp"
+            android:text="@string/shortcut_home_settings"
+            android:drawableTop="@drawable/ic_settings"
+            android:nextFocusLeft="@+id/shortcutAllApps"
+            android:nextFocusRight="@+id/shortcutTvSettings"
+            android:nextFocusDown="@id/weatherPanel"
+            android:nextFocusUp="@+id/grid" />
+
+        <TextView
+            android:id="@+id/shortcutTvSettings"
+            style="@style/ShortcutButton"
+            android:layout_marginStart="8dp"
+            android:text="@string/shortcut_tv_settings"
+            android:drawableTop="@drawable/ic_tv_settings"
+            android:nextFocusLeft="@+id/shortcutHomeSettings"
+            android:nextFocusDown="@id/weatherPanel"
+            android:nextFocusUp="@+id/grid" />
+    </LinearLayout>
+
+    <com.gathin.tvhome.WeatherPanelView
+        android:id="@+id/weatherPanel"
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:layout_marginTop="28dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:nextFocusUp="@id/shortcutTvSettings"
+        android:visibility="gone" />
+</LinearLayout>

@@ -1,0 +1,10 @@
+{
+  "wallpaper": true,
+  "wallpaper_rotation_minutes": 60,
+  "wallpaper_captions": false,
+  "dock_opacity": 100,
+  "fade_rows": false,
+  "sky_intensity": 0,
+  "cinematic_scrim": 0,
+  "cinematic_art": 0
+}
