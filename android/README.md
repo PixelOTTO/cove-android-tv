@@ -18,7 +18,7 @@ The APK is written to `app/build/outputs/apk/release/`. The build uses Gradle's 
 - `app/src/test/`  existing JVM tests
 - `gradle/`, `gradlew`, and `gradlew.bat` — Gradle wrapper
 - `LICENSE` and `THIRDmPARTY NOTICES.md` — project and upstream license information
-- `FONT LICENSE OFL.txt` — Outfit typeface license
+- `FONT LICENSE OFL.txt` Outfit typeface license
 
 The Android application ID remains `com.gathin.tvhome` so supported updates can install over earlier Cove/CleanYourTV builds.
 
